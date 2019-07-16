@@ -42,12 +42,20 @@ In fact, many factors influence housing price, such as the area of the house, th
 15 features are visulized as below
 ![Image](feature_distribution.png)
 
+---
+# 3. Data pre-processing
+After the dataset is visulized and examined, the 
+Step1: remove irrelevant features: id, date, lat, long, zipcode
+Step2: remove the feature "waterfront" as it is 0 for all the data points
 
-# 3. Data processing and feature selection
+From the visulization results, the features in the dataset shows different properties and data processing is needed.  
+1. Different scale: 
 
-# 4. Housing price prediction with linear regression
+# 4. Feature selection 
 
-# 5. Housing price prediction with neural netwok
+# 5. Housing price prediction with linear regression
 
-# 6. Housing recommendation with K-NN
+# 6. Housing price prediction with neural netwok
+
+# 7. Housing recommendation with K-NN
 
