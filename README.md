@@ -183,16 +183,16 @@ The house recommendation is conducted with k-neareast neighbor algorithm to find
 <p/>
 
 # 8. Discussions (the questions in proposal) 
-a. Do all the feature ranking methods list the same informative features? And do those features ranked in the same order? 
+a. Do all the feature ranking methods list the same informative features? And do those features ranked in the same order?  
 Answer: No, there are slight difference. In both recursive feature elimination (RFE), the number of rooms has higher importance while in random forest feature ranking, the area of the rooms has higher importance. However, categorical features such as grade (the grad evaluated by agency) are ranked high by both method
 
-b. With the same set of features, which regression model provides the most accurate prediction. 
+b. With the same set of features, which regression model provides the most accurate prediction.  
 Answer: Lasso and Ridge regression with polynomial features (degree = 2) provides the most accurate prediction results as it prevents overfitting. 
 
-c. How to choose the proper methods for prediction
+c. How to choose the proper methods for prediction  
 Answer: in this project, neural network shows the smallest rmse loss for prediction. The factors that influence the prediction accuracy are the number of hidden units, activation functions. For house price prediction, hidden units of larger than 64 is preferred and ReLU activation provides faster training and better accuracy
 
-d. Why not use PCA for feature selection
+d. Why not use PCA for feature selection  
 Answer: Fisrt, PCA is trying to find the feature or dimension with the highest variance. However, in this project, what we would like to find are the features with the highest impact on house price. Features with high variance may not necessarily have high impact on house price. Besides, PCA may create new features on a new dimension, which is not intepretable.  
 
 # 9. Conclusion
