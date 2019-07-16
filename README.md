@@ -46,7 +46,7 @@ In fact, many factors influence housing price, such as the area of the house, th
 
 ---
 # 3. Data pre-processing
-After the dataset is visulized and examined, the data is processed as shown blow: 
+After the dataset is visulized and examined, the data is processed in following ways: 
 1. remove irrelevant features: id, date, lat, long, zipcode
 2. remove the feature "waterfront" as it is 0 for all the data points
 3. normalize the all the features with its mean and sigma as their scale is quite different
@@ -58,6 +58,11 @@ After the dataset is visulized and examined, the data is processed as shown blow
 # 5. Housing price prediction with linear regression
 
 # 6. Housing price prediction with neural netwok
+Neural network is a powerful tool for making dcision . A 2-layer neural network with fully connected layer is implemented for house price prediction. 
 
 # 7. Housing recommendation with K-NN
+
+# 8. Conclusion
+
+# 9. Reference
 
