@@ -3,7 +3,7 @@
 
 ---
 # 1. Motivaton
-House price is highly concerned by people that are looking for places to live or opportunities to invest.  
+House price is highly concerned by people that are looking for places to live or opportunities to invest. Actually,  
 
 ![Image](Introduction.png)
 
@@ -58,9 +58,22 @@ After the dataset is visulized and examined, the data is processed in following 
 # 5. Housing price prediction with linear regression
 
 # 6. Housing price prediction with neural netwok
-A 2-layer neural network with fully connected layer is implemented for house price prediction. The hidden layer unit is 64, the activation function at the hidden layer is ReLU and the output is the house price. The prediction is evaluated with root-mean-squred-error (RMSE) of the predicted house price.  
-First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows 
-![RMSEofNNvsLR](MRSE_ANN.png =100x)
+## neural network vs linear regression
+A 2-layer neural network with fully connected layer is implemented for house price prediction. The hidden layer unit is 64, the activation function at the hidden layer is ReLU and the output is the house price. The prediction is evaluated with root-mean-squred-error (RMSE) of the predicted house price. The neural network is trained with 20 epoch.  
+First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows lower loss than all the linear regression based methods, which indicates that it can be a good model for house price prediction. 
+![RMSEofNNvsLR](MRSE_ANN.png)
+
+## prediction loss vs. number of hidden units
+Then we examined the prediction loss with different neural network settings. The prediction loss of the neural network can be decreased by increasing the number of hidden units, as shown in the figure below. It means that a more complicated model is desired for this task
+![RMSEofNNvshidden_units](Loss_vs_hidden_units.png)
+
+## prediction loss vs. activation function
+Three different activation functions are examined ReLU, Sigmoid and Tanh. The results shows that prediction loss is small when "ReLU" is used while the prediction loss is large when the activation is Sigmoid or Tanh. The prediction loss vs. training epoch is plotted. The neural networks with Sigmoid and Tanh shows slow training as the neuron activation value is limited, which is (0,1) for Sigmoid and (-1,1) for Tanh
+![RMSEofNNvsactivation](MRSE_ANN_activations.png)![RMSEofNNvsactivation](Loss_vs_activation_type.png)
+
+## Prediction loss vs. optimizers
+The prediction loss of neural network trained with different optimization method are also examined with SGD and RMSprop. RMSprop shows faster convergence and less fluctuations when it is convergent because the learning rate can be varied during the training. 
+![Loss_vs_optimizer](Loss_vs_optimizer.png)
 
 
 # 7. Housing recommendation with K-NN
