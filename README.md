@@ -53,24 +53,23 @@ In fact, many factors influence housing price, such as the area of the house, th
 
 #### Correlation Heat Map
 
-To find out how each feature is correlated to our target variable "price", we have drawn the Pearson correation matrix is drawn below as a heat map. 
+To find out how each feature is correlated to our target variable "price", the Pearson correation matrix is drawn below as a heat map. 
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_ALL.PNG" width="500"/>
 </p>
 
-It shows that the correlation value can be positive or negative, when the correlation is positive, it means the increasing of value in such feature will cause the target variable "price" to increase, and vice versa.
+The features with correlation coefficients close to +1 or -1 with price may have higher impact on house price. Those with correlation efficients close to 0 may be irrelevent to house price. Besides, if two features have high correlation, one of them may be redundant. 
 
-We have further drawn the most significant correlated features with target variable "price", as shown below:
+The correlation matrix with features that is highly correlated with "price" is drawn below
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_select.PNG" width="500"/>
 </p>
 
-It is very easy to identify which features are most related to the target variable, as it shown above, the most important features from the heatmap are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
+From the above results, the features that are high correlated with house price are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
 
-
-To better understand the relationship among the features, we have drawn the pairplots for some features, the features we selected are those we considered as very important as our first thought. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local county. As the pairplot shown below, we could find some linear distribution between price and the features, which could be useful in our linear model.
+A pairplots is drawn to visualize the relationship between different features. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local real estate agency. The pairplots shows that some features are either linearly or quadraticlly correlated with "price", which indicates that a linear or polynomial regression model can be helpful for house price prediction.  
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Plot.png">
