@@ -206,17 +206,17 @@ Answer: Fisrt, PCA is trying to find the feature or dimension with the highest v
 # 9. Conclusion
 a. Obtained features that influence house price the most  
 > Obtained the features that has the highest impact on house price with two feature selection methods: recursive feature elimination (RFE) and random forest.  
-> It can be concluded that categorical featuress such as the grade of the house has high impact on house price. 
-> Besides, different feature selection method can leads to different results. E.g. for RFE, the number of rooms have the highest impact on house price while the room area is important for house price from random forest based feature selection. 
+> It can be concluded that categorical featuress such as the grade of the house has high impact on house price.  
+> Besides, different feature selection method can leads to different results. E.g. for RFE, the number of rooms have the highest impact on house price while the room area is important for house price from random forest based feature selection.  
 
 b. Build the house prediction model
-> Both linear regression and neural network are implemented. 
-> Neural network provides better prediction. 
-> More hidden units and use 'ReLU' as activation can help improve the prediction
+> Both linear regression and neural network are implemented.  
+> Neural network provides better prediction.  
+> More hidden units and use 'ReLU' as activation can help improve the prediction  
 
-c. House recommendation by K-NN
-> Recommend house based on consumer's needs
-> Price is an important feature to match
+c. House recommendation by K-NN  
+> Recommend house based on consumer's needs  
+> Price is an important feature to match  
 
 # 10. Reference
 [1]Park, B. and J. K. Bae (2015). "Using machine learning algorithms for housing price prediction: The case of Fairfax County, Virginia housing data." Expert Systems with Applications 42(6): 2928-2934.  
