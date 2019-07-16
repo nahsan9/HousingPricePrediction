@@ -13,7 +13,7 @@ In fact, many factors influence housing price, such as the area of the house, th
 3. House recommendation based on consumers’ preference with k-neareat neighbor method (K-NN)
 
 ---
-# 2. Introduction to Dataset and visulization 
+# 2. Dataset and visulization 
 ## Dataset: House Sales in King County (from Kaggle)
 ## Features in the dataset: 21 features in total
 1. id: notation for a house  
@@ -38,7 +38,9 @@ In fact, many factors influence housing price, such as the area of the house, th
 20. sqft_living15: Living room area in 2015 This might or might not have affected the lotsize area  
 21. sqft_lot15: lot size area in 2015  
 
-## dataset processing and 
+## dataset visulization
+15 features are visulized as below
+![Image](feature_distribution.png)
 
 
 # 3. Data processing and feature selection
