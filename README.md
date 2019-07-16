@@ -147,7 +147,7 @@ Selecting all the features for regression shows slightly lower RMSE than select 
 # 6. Housing price prediction with neural netwok
 
 <p align="center">
-  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/MLP.png" width="400"/>
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/MLP.png" width="300"/>
 </p>
 
 ### (1). neural network vs linear regression
