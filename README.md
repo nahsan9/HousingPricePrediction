@@ -58,7 +58,10 @@ After the dataset is visulized and examined, the data is processed in following 
 # 5. Housing price prediction with linear regression
 
 # 6. Housing price prediction with neural netwok
-Neural network is a powerful tool for making dcision . A 2-layer neural network with fully connected layer is implemented for house price prediction. 
+A 2-layer neural network with fully connected layer is implemented for house price prediction. The hidden layer unit is 64, the activation function at the hidden layer is ReLU and the output is the house price. The prediction is evaluated with root-mean-squred-error (RMSE) of the predicted house price.  
+First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows 
+![RMSEofNNvsLR](MRSE_ANN.png =100x)
+
 
 # 7. Housing recommendation with K-NN
 
