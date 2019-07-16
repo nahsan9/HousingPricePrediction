@@ -154,7 +154,7 @@ Selecting all the features for regression shows slightly lower RMSE than select 
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/MLP.png" width="300"/>
 </p>
 
-##. neural network vs linear regression
+## neural network vs linear regression
 A 2-layer neural network with fully connected layer is implemented for house price prediction. The hidden layer unit is 64, the activation function at the hidden layer is ReLU and the output is the house price. The prediction is evaluated with root-mean-squred-error (RMSE) of the predicted house price. The neural network is trained with 20 epoch.  
 First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows lower loss than all the linear regression based methods, which indicates that it can be a good model for house price prediction.
 
