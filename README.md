@@ -2,8 +2,9 @@
 ## Team members: Yandong Luo, Xiaochen Peng, Hongwu Jiang and Panni Wang
 
 ---
-
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Housing_expenses.png"> 
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Housing_expenses.png"> 
+</p>
 
 # 1. Motivaton and overview of the project
 House price is highly concerned by people who are looking for places to live or opportunities to invest. Actually, housing expenses takes 30% of our daily expenses. It is easy to know the price of a house, but difficult to know whether the price is reasonable or not
