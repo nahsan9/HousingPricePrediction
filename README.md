@@ -137,7 +137,7 @@ It is clearly shown that, no matter in the "all features included" or "selected 
 
 To find out the comparison among all the methods, we have printed out the rmse values of them, as the figure shown below.
 
-<img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/RMSE.PNG" width="350"/>
+<img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/RMSE.PNG" width="400"/>
 
 It further proves our thoughts, the rmse values in linear regression are the lowest ones, no matter for "all features" or "selected top-10 features". While when we fix the regression methods (just linear regression, ridge or lasso regression), we found that, the "all features" always achieves better rmse than "selected top-10 features" ones. It reveals that, the linear regression cannot well fit the dataset and predict the target variable.
 
@@ -145,29 +145,39 @@ It further proves our thoughts, the rmse values in linear regression are the low
 
 ### (1). neural network vs linear regression
 A 2-layer neural network with fully connected layer is implemented for house price prediction. The hidden layer unit is 64, the activation function at the hidden layer is ReLU and the output is the house price. The prediction is evaluated with root-mean-squred-error (RMSE) of the predicted house price. The neural network is trained with 20 epoch.  
-First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows lower loss than all the linear regression based methods, which indicates that it can be a good model for house price prediction. 
+First, the RMSE obtained by neural network method is compared with that of linear regression, as shown in the figure below. Neural network shows lower loss than all the linear regression based methods, which indicates that it can be a good model for house price prediction.
 
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/MRSE_ANN.png" width="350"/>
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/MRSE_ANN.png" width="400"/>
+</p>
 
 ## prediction loss vs. number of hidden units
 Then we examined the prediction loss with different neural network settings. The prediction loss of the neural network can be decreased by increasing the number of hidden units, as shown in the figure below. It means that a more complicated model is desired for this task
 
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_hidden_units.png" width="350"/>
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_hidden_units.png" width="400"/>
+</p>
 
 ## prediction loss vs. activation function
 Three different activation functions are examined ReLU, Sigmoid and Tanh. The results shows that prediction loss is small when "ReLU" is used while the prediction loss is large when the activation is Sigmoid or Tanh. The prediction loss vs. training epoch is plotted. The neural networks with Sigmoid and Tanh shows slow training as the neuron activation value is limited, which is (0,1) for Sigmoid and (-1,1) for Tanh
 
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/MRSE_ANN_activations.png" width="280"/> <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_activation_type" width="280"/>
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/MRSE_ANN_activations.png" width="300"/> <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_activation_type" width="300"/>
+</p>
 
 ## Prediction loss vs. optimizers
 The prediction loss of neural network trained with different optimization method are also examined with SGD and RMSprop. RMSprop shows faster convergence and less fluctuations when it is convergent because the learning rate can be varied during the training. 
 
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_optimizer.png" width="350"/>
-
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_optimizer.png" width="400"/>
+</p>
+  
 # 7. Housing recommendation with K-NN
 The house recommendation is conducted with k-neareast neighbor algorithm to find the house that best matches the consumer's preference, which is measured by the Euclidean distance between the house in the dataset and the preference input by consumer. An example is shown in the table below, where 5 recommendations are made. It is noted that house price is an important factor as recommendations are trying to match the price expected by consumers. As consumers are price sensitive, it indicates the K-NN works well for house recommendation. 
 
-<img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Recommendation.JPG" width="350"/>
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Recommendation.JPG" width="400"/>
+<p/>
 
 # 8. Discussions (the questions in proposal) 
 a. Do all the feature ranking methods list the same informative features? And do those features ranked in the same order? 
