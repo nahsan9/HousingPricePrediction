@@ -9,5 +9,13 @@ House price is highly concerned by people that are looking for places to live or
 3. Recommend houses based on consumers’ preference
 
 ---
-# 2. Dataset
+# 2. Introduction to Dataset
+
+# 3. Data processing and feature selection
+
+# 4. Housing price prediction with linear regression
+
+# 5. Housing price prediction with neural netwok
+
+# 6. Housing recommendation with K-NN
 
