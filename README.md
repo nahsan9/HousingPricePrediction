@@ -15,7 +15,7 @@ In fact, many factors influence housing price, such as the area of the house, th
 ---
 # 2. Introduction to Dataset and visulization 
 ## Dataset: House Sales in King County (from Kaggle)
-## Features in the dataset: 
+## Features in the dataset: 21 features in total
 1. id: notation for a house  
 2. dateDate: house was sold  
 3. price: the sell price of the house, which is what we need to predict
