@@ -86,19 +86,9 @@ After the dataset is visulized and examined, the data is processed in following 
 ---
 # 4. Feature selection 
 
-If the data dimention (features) is high, it can be problematic for data analysis: 
-a. high data dimension will significantly increase the training time of the model, and increase the complexity of the model. 
-b. it is at the risk of overfitting.  
+In this section, two feature selection methods to find the features that highly influences the house price: the recursive feature elimination (RFE) and random forest based feature selection. The RFE method start with a complete set of features and it reursively remove one feature to evaluate the importance of this feature. It stops until the number of desired features is obtained.  
 
-In this section, two feature selection methods to find the features with the highest impact on housing price: the re
-
-Of course, using the corelation heap map itself, could be not representive enough, thus, we further used the feature ranking functions in each models and get the mean ranking values, to select the top-N important ones.
-We have implemented five representative models to get their scores about the features, and get the mean values of them, which are linear regression, ridge, lasso, recursive feature elimination and random forest model.
-As the figures shown below, the first three linear models returned same feature ranking results, the most important features are: grade, view, bathrooms, bedrooms, yr_renovated, floors and conditions.
-
-<img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_LR.PNG" width="280"/> <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_Ridge.PNG" width="280"/><img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_Lasso.PNG" width="280"/>
-
-However, in recursive feature elimination, we get a quite different feature ranking as shown below:
+From the results of RFE below, some categorical features such as grade (evaluated from local real estate agency) and condition are ranked high. Besides, 
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RFE.PNG" width="400"/>
