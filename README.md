@@ -2,16 +2,16 @@
 ## Team members: Yandong Luo, Xiaochen Peng, Hongwu Jiang and Panni Wang
 
 ---
-# 1. Motivaton
-House price is highly concerned by people that are looking for places to live or opportunities to invest. Actually,  
+# 1. Motivaton and overview of the project
+House price is highly concerned by people who are looking for places to live or opportunities to invest. Actually, housing expenses takes 30% of our daily expenses. It is easy to know the price of a house, but difficult to know whether the price is reasonable or not
 
 <p align="center">
   <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Introduction.png" width="450"/>
 </p>
 
 In fact, many factors influence housing price, such as the area of the house, the number of bedrooms, the location et. al. Therefore, in this project, we will focus on the following three aspects related to house price, which is important to help us make a good deal:  
-1. Find the main factors that influence house price with feature selection methods such as recursive feature selection (RFE) and RandomForest
-2. Build house price prediction model using linear regression and neural network
+1. Select the features that have impact on house price with recursive feature selection (RFE) and Random Forest
+2. Build house price prediction model using linear regression and neural network with different house features. 
 3. House recommendation based on consumers’ preference with k-neareat neighbor method (K-NN)
 
 ---
@@ -24,12 +24,12 @@ In fact, many factors influence housing price, such as the area of the house, th
 3. price: the sell price of the house, which is what we need to predict
 4. bedrooms: Number of Bedrooms/House
 5. bathrooms: Number of bathrooms/House  
-6. sqft_livingsquare footage of the home  
-7. sqft_lotsquare footage of the lot  
+6. sqft_living: square footage of the home  
+7. sqft_lot: square footage of the lot  
 8. floorsTotal: floors (levels) in house  
 9. waterfront: House which has a view to a waterfront  
-10. view: Has been viewed?  
-11. condition: How good the condition is ( Overall )  
+10. view: how many time it has been viewd consumers?  
+11. condition: How good the condition is (Overall)  
 12. grade: overall grade given to the housing unit, based on King County grading system  
 13. sqft_above: square footage of house apart from basement  
 14. sqft_basements: quare footage of the basement  
@@ -42,12 +42,38 @@ In fact, many factors influence housing price, such as the area of the house, th
 21. sqft_lot15: lot size area in 2015  
 
 ### (2). dataset visulization
-15 features are visulized as below. The features as the following characteristics: 
-1. The scale of each feature is quite different. It needs to be normalized
-2. There are continuos variables (sqrf_lot et.al), dicreste variables (bedrooms) and categorical variable (yr_renovated)
+#### Feature distribution
+15 features are visulized as below. The features has the following characteristics: 
+1. The scale of each feature is quite different, which means normalization is needed
+2. There are continuos variables (sqrf_lot et.al), dicreste variables (bedrooms) and categorical variable (grade,yr_renovated)
 
 <p align="center">
   <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Feature_Dist.PNG">
+</p>
+
+#### Correlation Heat Map
+
+To find out how each feature is correlated to our target variable "price", we have drawn the Pearson correation matrix is drawn below as a heat map. 
+
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_ALL.PNG" width="500"/>
+</p>
+
+It shows that the correlation value can be positive or negative, when the correlation is positive, it means the increasing of value in such feature will cause the target variable "price" to increase, and vice versa.
+
+We have further drawn the most significant correlated features with target variable "price", as shown below:
+
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_select.PNG" width="500"/>
+</p>
+
+It is very easy to identify which features are most related to the target variable, as it shown above, the most important features from the heatmap are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
+
+
+To better understand the relationship among the features, we have drawn the pairplots for some features, the features we selected are those we considered as very important as our first thought. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local county. As the pairplot shown below, we could find some linear distribution between price and the features, which could be useful in our linear model.
+
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Plot.png">
 </p>
 
 ---
@@ -61,36 +87,11 @@ After the dataset is visulized and examined, the data is processed in following 
 ---
 # 4. Feature selection 
 
-When the dataset comes to be high dimensional, it could lead to many problems. Firstly, such high dimension will significantly increase the training time of the model, and dramatically increase the complexity of the model. Secondly, the model may make decisions based on the noise, and thus, cause overfitting. What's more, the meaningless redundent data will be very misleading, and could decrease the accuracy.
-To achieve better performance, we firstly used two feature selection methods to cancel out the redundent features, one of the methods is to draw the correlation matrix with heatmap, the second method is to calculate the feature importance and select the top-N features according to the feature ranking.
+If the data dimention (features) is high, it can be problematic for data analysis: 
+a. high data dimension will significantly increase the training time of the model, and increase the complexity of the model. 
+b. it is at the risk of overfitting.  
 
-### (1). Dataset Analysis
-
-To better understand the relationship among the features, we have drawn the pairplots for some features, the features we selected are those we considered as very important as our first thought. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local county. As the pairplot shown below, we could find some linear distribution between price and the features, which could be useful in our linear model.
-
-<p align="center">
-  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Plot.png">
-</p>
-
-### (2). Correlation Heat Map
-
-To find out how each feature is correlated to our target variable "price", we have drawn the correation heat map of all the features as shown below:
-
-<p align="center">
-  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_ALL.PNG" width="500"/>
-</p>
-
-It shows that, the correlation value can be positive or negative, when the correlation is positive, it means the increasing of value in such feature will cause the target variable "price" to increase, and vice versa.
-
-We have further drawn the most significant correlated features with target variable "price", as shown below:
-
-<p align="center">
-  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_select.PNG" width="500"/>
-</p>
-
-It is very easy to identify which features are most related to the target variable, as it shown above, the most important features from the heatmap are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
-
-### (3). Feature Ranking
+In this section, two feature selection methods to find the features with the highest impact on housing price: the re
 
 Of course, using the corelation heap map itself, could be not representive enough, thus, we further used the feature ranking functions in each models and get the mean ranking values, to select the top-N important ones.
 We have implemented five representative models to get their scores about the features, and get the mean values of them, which are linear regression, ridge, lasso, recursive feature elimination and random forest model.
