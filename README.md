@@ -88,19 +88,17 @@ After the dataset is visulized and examined, the data is processed in following 
 
 In this section, two feature selection methods to find the features that highly influences the house price: the recursive feature elimination (RFE) and random forest based feature selection. The RFE method start with a complete set of features and it reursively remove one feature to evaluate the importance of this feature. It stops until the number of desired features is obtained.  
 
-From the results of RFE below, some categorical features such as grade (evaluated from local real estate agency) and condition are ranked high. Besides, 
+From the results of RFE below, some categorical features such as grade (evaluated from local real estate agency) and condition are ranked high. Besides, the number of bedroom, bathrooms ranks higher than the area of the bedroom, bathrooms. 
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RFE.PNG" width="400"/>
 </p>
 
-While in random forest model, the feature ranking is give as below:
+In random forest model, similar as RFE, the categorical features such as grade are ranked high. However, different from RFE, the area of the rooms are more import from random forest model. 
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RF.PNG" width="400"/>
 </p>
-
-We could find that, in recursive feature elimination and random forest feature ranking, there are more features as continuous data on the top ranks, such as the area of living rooms and lots (sqft_living and sqft_lot). While in the linear model, the top ranked features are discrete data.
 
 To get a more balanced feature ranking, we normalized the scores from each model and get the mean values, the final feature ranking is shown as below:
 
@@ -108,23 +106,21 @@ To get a more balanced feature ranking, we normalized the scores from each model
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_Average.PNG" width="400"/>
 </p>
 
-Where the top ranked features include both continuous and discrete data: sqft_living, sqft_lot as continuous data, grade, view, bedrooms and bathrooms are discrete data.
+Therefore, it can be concluded that the features has high impact on house price are: grade, the number of bedrooms and bathrooms, and whether the house has been renovated. 
 
 # 5. Housing price prediction with linear regression
 
 <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Price_Bathrooms.PNG" width="280"/> <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Price_Bedrooms.PNG" width="280"/><img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Price_SqLiving.PNG" width="280"/>
 
-As what we have shown in the dataset analysis, some features shows a classical linear relationship, while some do not have very good linear form, thus, we use both of the linear and polynomial regression, to study how the data distribution affect the linear models.
+As what we have shown in the dataset analysis, some features shows a classical linear relationship, while others show a quanratic relation with house price. In this section, both the linear and polynomial regression model are impelemented for house price prediction. 
 
-After data pre-processing as we mentioned above, there are 14 features left in the dataset, which is divided in to training and testing set. With linear regression, when the number of features is too low, it could suffer from under-fitting, and get poor performance in both training and testing, while if the features are too many, it is also possible to get over-fitting problem. To learn about the number of features in the linear regression, we have run linear and polynomial regression, based on three models (linear regression, ridge regression and lasso regression), with all the 14 features and only top-10 important features. 
+After data pre-processing as we mentioned above, there are 14 features left in the dataset. An the dataset is divided into training and testing set. With linear regression, when the number of features is too low, it could suffer from under-fitting, and get poor performance in both training and testing, while if there are too many features, over-fitting may likely to happen. To learn about the number of features in the linear regression, we have run linear and polynomial regression, based on three models (linear regression, ridge regression and lasso regression), with all the 14 features and only top-10 important features. 
 
-In ridge regression, it shrinks the coefficients (w) by putting constraint on them, and thus, helps to reduce the model complexity and multi-collinearity. Similarly, in lasso regression, the regularization will lead to zero coefficients, which means some of the features are completely neglected for the evaluation of output, thus, lasso regression not only helps in reducing over-fitting, but also helps in feature selection.
-
-The reason why we used three linear models is, the ridge and lasso regression are some of the simple techniques to reduce model complexity and prevent over-fitting which may result from simple linear regression. By comparing the linear regression, ridge regression and lasso regression, we can also get an insight about how the number of features affect the model performance.
+In ridge regression, it shrinks the coefficients (w) by putting L2 norm on them and therefore, helps to reduce the model complexity and multi-collinearity. Similarly, in lasso regression, the regularization will lead to zero coefficients, which means some of the features are completely neglected for the evaluation of output. 
 
 ### (1). ALL Features Included
 
-As the figure shown below, where red line is the real price value, and the blue dots are the predicted price value, the first row shows the linear, lasso and ridge regression without polynomial, the second row shows when polynomial in introduced with degree equals to 2, and the third is with degree equals to 3. It shows that, with polynomial, the prediction achieves better performance, since it can help to fit in non-linear features.
+As the figure shown below, where red line is the real price value, and the blue dots are the predicted price value. The first row shows the linear, lasso and ridge regression without polynomial, the second row shows when polynomial in introduced with degree equals to 2, and the third is with degree equals to 3. It shows that, with polynomial, the prediction achieves better performance, since it can help to fit in non-linear features.
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Predict_All.PNG">
@@ -140,15 +136,13 @@ The figure shown above is the relation between real price and predicted price, w
 
 ### (3). Comparison and Discussion
 
-It is clearly shown that, no matter in the "all features included" or "selected top-10 features", the linear regression achieves the best performance. While in each method, the ones with polynomial achieves better prediction.
-
-To find out the comparison among all the methods, we have printed out the rmse values of them, as the figure shown below.
+It is shown that Lasso and Ridge regression shows lower RMSE, which indicates more accurate prediction due to less over-fitting. Besides, polynomial regression with 2nd order features shows the lower RMSE loss.  
 
 <p align="center">
   <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/RMSE.PNG" width="400"/>
 </p>
 
-It further proves our thoughts, the rmse values in linear regression are the lowest ones, no matter for "all features" or "selected top-10 features". While when we fix the regression methods (just linear regression, ridge or lasso regression), we found that, the "all features" always achieves better rmse than "selected top-10 features" ones. It reveals that, the linear regression cannot well fit the dataset and predict the target variable.
+Selecting all the features for regression shows slightly lower RMSE than select 10 features. It can be explained that the number of features in this dataset is small (21 in total) and therefore there is no over-fitting by using all the features. 
 
 # 6. Housing price prediction with neural netwok
 
@@ -190,27 +184,31 @@ The house recommendation is conducted with k-neareast neighbor algorithm to find
 
 # 8. Discussions (the questions in proposal) 
 a. Do all the feature ranking methods list the same informative features? And do those features ranked in the same order? 
-Answer: Yes, almost the same. In both recursive feature elimination (RFE) and random forest feature ranking, categorical features such as grade (the grad evaluated by agency)  
+Answer: No, there are slight difference. In both recursive feature elimination (RFE), the number of rooms has higher importance while in random forest feature ranking, the area of the rooms has higher importance. However, categorical features such as grade (the grad evaluated by agency) are ranked high by both method
 
 b. With the same set of features, which regression model provides the most accurate prediction. 
 Answer: Lasso and Ridge regression with polynomial features (degree = 2) provides the most accurate prediction results as it prevents overfitting. 
 
 c. How to choose the proper methods for prediction
-Answer: in this project, neural network shows the smallest rmse loss for prediction. The factors that influence the prediction accuracy are the number of hidden units, activation functions. For house price prediction, hidden units of larger than 64 is preferred and ReLU activation provides faster training and better accuracy 
+Answer: in this project, neural network shows the smallest rmse loss for prediction. The factors that influence the prediction accuracy are the number of hidden units, activation functions. For house price prediction, hidden units of larger than 64 is preferred and ReLU activation provides faster training and better accuracy
+
+d. Why not use PCA for feature selection
+Answer: Fisrt, PCA is trying to find the feature or dimension with the highest variance. However, in this project, what we would like to find are the features with the highest impact on house price. Features with high variance may not necessarily have high impact on house price. Besides, PCA may create new features on a new dimension, which is not intepretable.  
 
 # 9. Conclusion
-a. Obtained features that influence house price the most 
-Obtained the features that has the highest impact on house price with two feature selection methods: recursive feature elimination (RFE) and random forest.  
-It can be concluded that categorical featuress such as the grade of the house and the number of rooms have the highest impact on house price. The room area is not important for house price. 
+a. Obtained features that influence house price the most  
+> Obtained the features that has the highest impact on house price with two feature selection methods: recursive feature elimination (RFE) and random forest.  
+> It can be concluded that categorical featuress such as the grade of the house has high impact on house price. 
+> Besides, different feature selection method can leads to different results. E.g. for RFE, the number of rooms have the highest impact on house price while the room area is important for house price from random forest based feature selection. 
 
 b. Build the house prediction model
-Both linear regression and neural network are implemented. 
-Neural network provides better prediction. 
-More hidden units and use 'ReLU' as activation can help improve the prediction
+> Both linear regression and neural network are implemented. 
+> Neural network provides better prediction. 
+> More hidden units and use 'ReLU' as activation can help improve the prediction
 
 c. House recommendation by K-NN
-Recommend house based on consumer's needs
-Price is an important factor to match
+> Recommend house based on consumer's needs
+> Price is an important feature to match
 
 # 10. Reference
 [1]Park, B. and J. K. Bae (2015). "Using machine learning algorithms for housing price prediction: The case of Fairfax County, Virginia housing data." Expert Systems with Applications 42(6): 2928-2934.  
