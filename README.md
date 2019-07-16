@@ -17,7 +17,7 @@ In fact, many factors influence housing price, such as the area of the house, th
 ## Dataset: House Sales in King County (from Kaggle)
 ## Features in the dataset: 21 features in total
 1. id: notation for a house  
-2. dateDate: house was sold  
+2. date: date house was sold  
 3. price: the sell price of the house, which is what we need to predict
 4. bedrooms: Number of Bedrooms/House
 5. bathrooms: Number of bathrooms/House  
@@ -39,18 +39,20 @@ In fact, many factors influence housing price, such as the area of the house, th
 21. sqft_lot15: lot size area in 2015  
 
 ## dataset visulization
-15 features are visulized as below
+15 features are visulized as below. The features as the following characteristics: 
+1. The scale of each feature is quite different. It needs to be normalized
+2. There are continuos variables (sqrf_lot et.al), dicreste variables (bedrooms) and categorical variable (yr_renovated)
 ![Image](feature_distribution.png)
 
 ---
 # 3. Data pre-processing
-After the dataset is visulized and examined, the 
-Step1: remove irrelevant features: id, date, lat, long, zipcode
-Step2: remove the feature "waterfront" as it is 0 for all the data points
+After the dataset is visulized and examined, the data is processed as shown blow: 
+1. remove irrelevant features: id, date, lat, long, zipcode
+2. remove the feature "waterfront" as it is 0 for all the data points
+3. normalize the all the features with its mean and sigma as their scale is quite different
+4. There is a categorical feature: yr_renovated. It is either 0 or the year that it has been renovated. It is treat as a dummy variable with only two values: "1" if the house has been renovated and "0" if it has not. 
 
-From the visulization results, the features in the dataset shows different properties and data processing is needed.  
-1. Different scale: 
-
+---
 # 4. Feature selection 
 
 # 5. Housing price prediction with linear regression
