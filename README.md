@@ -73,6 +73,7 @@ The correlation matrix with features that is highly correlated with "price" is d
 
 From the above results, the features that are high correlated with house price are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
 
+#### pairplots
 A pairplots is drawn to visualize the relationship between different features. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local real estate agency. The pairplots shows that some features are either linearly or quadraticlly correlated with "price", which indicates that a linear or polynomial regression model can be helpful for house price prediction.  
 
 <p align="center">
