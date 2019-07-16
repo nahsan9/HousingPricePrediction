@@ -160,10 +160,37 @@ Three different activation functions are examined ReLU, Sigmoid and Tanh. The re
 The prediction loss of neural network trained with different optimization method are also examined with SGD and RMSprop. RMSprop shows faster convergence and less fluctuations when it is convergent because the learning rate can be varied during the training. 
 ![Loss_vs_optimizer](https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Loss_vs_optimizer.png)
 
-
 # 7. Housing recommendation with K-NN
+The house recommendation is conducted with k-neareast neighbor algorithm to find the house that best matches the consumer's preference, which is measured by the Euclidean distance between the house in the dataset and the preference input by consumer. An example is shown in the table below, where 5 recommendations are made. It is noted that house price is an important factor as recommendations are trying to match the price expected by consumers. As consumers are price sensitive, it indicates the K-NN works well for house recommendation. 
 
-# 8. Conclusion
+![KNN_recommend](https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Recommendation.JPG)
 
-# 9. Reference
+# 8. Discussions (the questions in proposal) 
+a. Do all the feature ranking methods list the same informative features? And do those features ranked in the same order? 
+Answer: Yes, almost the same. In both recursive feature elimination (RFE) and random forest feature ranking, categorical features such as grade (the grad evaluated by agency)  
+
+b. With the same set of features, which regression model provides the most accurate prediction. 
+Answer: Lasso and Ridge regression with polynomial features (degree = 2) provides the most accurate prediction results as it prevents overfitting. 
+
+c. How to choose the proper methods for prediction
+Answer: in this project, neural network shows the smallest rmse loss for prediction. The factors that influence the prediction accuracy are the number of hidden units, activation functions. For house price prediction, hidden units of larger than 64 is preferred and ReLU activation provides faster training and better accuracy 
+
+# 9. Conclusion
+a. Obtained features that influence house price the most 
+Obtained the features that has the highest impact on house price with two feature selection methods: recursive feature elimination (RFE) and random forest.  
+It can be concluded that categorical featuress such as the grade of the house and the number of rooms have the highest impact on house price. The room area is not important for house price. 
+
+b. Build the house prediction model
+Both linear regression and neural network are implemented. 
+Neural network provides better prediction. 
+More hidden units and use 'ReLU' as activation can help improve the prediction
+
+c. House recommendation by K-NN
+Recommend house based on consumer's needs
+Price is an important factor to match
+
+# 10. Reference
+[1]Park, B. and J. K. Bae (2015). "Using machine learning algorithms for housing price prediction: The case of Fairfax County, Virginia housing data." Expert Systems with Applications 42(6): 2928-2934.
+[2]Gür Ali, Ö. et. al (2013). "Selecting rows and columns for training support vector regression models with large retail datasets." European Journal of Operational Research 226(3): 471-480.
+[3]Breiman, L. (2001). "Random Forests." Machine Learning 45(1): 5-32.
 
