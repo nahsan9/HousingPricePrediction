@@ -5,7 +5,9 @@
 # 1. Motivaton
 House price is highly concerned by people that are looking for places to live or opportunities to invest. Actually,  
 
-![Image](https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Introduction.png)
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Introduction.png" width="450"/>
+</p>
 
 In fact, many factors influence housing price, such as the area of the house, the number of bedrooms, the location et. al. Therefore, in this project, we will focus on the following three aspects related to house price, which is important to help us make a good deal:  
 1. Find the main factors that influence house price with feature selection methods such as recursive feature selection (RFE) and RandomForest
@@ -43,7 +45,10 @@ In fact, many factors influence housing price, such as the area of the house, th
 15 features are visulized as below. The features as the following characteristics: 
 1. The scale of each feature is quite different. It needs to be normalized
 2. There are continuos variables (sqrf_lot et.al), dicreste variables (bedrooms) and categorical variable (yr_renovated)
-![Image](https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Feature_Dist.PNG)
+
+<p align="center">
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Feature_Dist.PNG">
+</p>
 
 ---
 # 3. Data pre-processing
@@ -63,23 +68,25 @@ To achieve better performance, we firstly used two feature selection methods to 
 
 To better understand the relationship among the features, we have drawn the pairplots for some features, the features we selected are those we considered as very important as our first thought. The pairplots shows how "bathrooms", "bedrooms" and "sqft_living" are distributed vis-a-vis the price as well as the "grade", which means the grading of the houses by the local county. As the pairplot shown below, we could find some linear distribution between price and the features, which could be useful in our linear model.
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Plot.png)
-
-Moreover, we draw the distribution figures of all the features as shown below, to get a feel about which features are continuous, and which are not.
-
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Dist.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Feature_Plot.png">
+</p>
 
 ### (2). Correlation Heat Map
 
 To find out how each feature is correlated to our target variable "price", we have drawn the correation heat map of all the features as shown below:
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_ALL.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_ALL.PNG" width="500"/>
+</p>
 
 It shows that, the correlation value can be positive or negative, when the correlation is positive, it means the increasing of value in such feature will cause the target variable "price" to increase, and vice versa.
 
 We have further drawn the most significant correlated features with target variable "price", as shown below:
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_select.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/HeatMap_select.PNG" width="500"/>
+</p>
 
 It is very easy to identify which features are most related to the target variable, as it shown above, the most important features from the heatmap are: bathrooms, bedrooms, floors, grade, sqft_above, sqft_living and sqft_living15.
 
@@ -93,17 +100,23 @@ As the figures shown below, the first three linear models returned same feature 
 
 However, in recursive feature elimination, we get a quite different feature ranking as shown below:
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RFE.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RFE.PNG" width="400"/>
+</p>
 
 While in random forest model, the feature ranking is give as below:
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RF.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_RF.PNG" width="400"/>
+</p>
 
 We could find that, in recursive feature elimination and random forest feature ranking, there are more features as continuous data on the top ranks, such as the area of living rooms and lots (sqft_living and sqft_lot). While in the linear model, the top ranked features are discrete data.
 
 To get a more balanced feature ranking, we normalized the scores from each model and get the mean values, the final feature ranking is shown as below:
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_Average.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/FeatureImp_Average.PNG" width="400"/>
+</p>
 
 Where the top ranked features include both continuous and discrete data: sqft_living, sqft_lot as continuous data, grade, view, bedrooms and bathrooms are discrete data.
 
@@ -123,11 +136,15 @@ The reason why we used three linear models is, the ridge and lasso regression ar
 
 As the figure shown below, where red line is the real price value, and the blue dots are the predicted price value, the first row shows the linear, lasso and ridge regression without polynomial, the second row shows when polynomial in introduced with degree equals to 2, and the third is with degree equals to 3. It shows that, with polynomial, the prediction achieves better performance, since it can help to fit in non-linear features.
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Predict_All.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Predict_All.PNG" width="400"/>
+</p>
 
 ### (2). Selected Top-10 Features Included
 
-![Image](https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Predict.PNG)
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/Predict.PNG" width="400"/>
+</p>
 
 The figure shown above is the relation between real price and predicted price, when we only introduced the top-10 important features. The first column shows the linear, ridge and lasso regression, and the second column shows the ones with polynomial (degree is set to 2). Similarly as what we have found in the "all features included" method, the linear regression achieves best performance among all the three linear models.
 
@@ -137,7 +154,9 @@ It is clearly shown that, no matter in the "all features included" or "selected 
 
 To find out the comparison among all the methods, we have printed out the rmse values of them, as the figure shown below.
 
-<img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/RMSE.PNG" width="400"/>
+<p align="center">
+  <img src="https://github.com/xiaochen76/CX4240-Project-House-Price-Predict/blob/master/Figures/RMSE.PNG" width="400"/>
+</p>
 
 It further proves our thoughts, the rmse values in linear regression are the lowest ones, no matter for "all features" or "selected top-10 features". While when we fix the regression methods (just linear regression, ridge or lasso regression), we found that, the "all features" always achieves better rmse than "selected top-10 features" ones. It reveals that, the linear regression cannot well fit the dataset and predict the target variable.
 
@@ -176,7 +195,7 @@ The prediction loss of neural network trained with different optimization method
 The house recommendation is conducted with k-neareast neighbor algorithm to find the house that best matches the consumer's preference, which is measured by the Euclidean distance between the house in the dataset and the preference input by consumer. An example is shown in the table below, where 5 recommendations are made. It is noted that house price is an important factor as recommendations are trying to match the price expected by consumers. As consumers are price sensitive, it indicates the K-NN works well for house recommendation. 
 
 <p align="center">
-  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Recommendation.JPG" width="400"/>
+  <img src="https://github.com/yandongluo/HousingPricePrediction/blob/master/Figures/Recommendation.JPG">
 <p/>
 
 # 8. Discussions (the questions in proposal) 
